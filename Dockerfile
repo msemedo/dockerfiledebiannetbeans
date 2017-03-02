@@ -10,7 +10,8 @@ RUN apt-get -y update && \
 	rm -rf /var/lib/apt/lists/* && \
 	rm -rf /tmp/*
 	
-
+ADD state.xml /tmp/state.xml
+	
 RUN wget http://download.netbeans.org/netbeans/8.2/final/bundles/netbeans-8.2-linux.sh -O /tmp/netbeans.sh -q --progress=bar:force:noscroll --show-progress && \
     chmod +x /tmp/netbeans.sh && \
     echo "Instalando..." && \
@@ -29,4 +30,4 @@ ENV HOME /home/netbeansdev
 WORKDIR /home/netbeansdev
 
 #CMD /usr/bin/netbeans
-CMD /bin/bash
+CMD /home/netbeansdev/netbeans-8.2/bin/netbeans
